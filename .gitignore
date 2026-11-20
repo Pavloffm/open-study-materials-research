@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 /AGENTS.md
 /assets/*.log
-/assets/*.pdf
+/assets/*.pdfversion-results
 /assets/*.aux
 /assets/*.fls
 /assets/*.fdb_latexmk
@@ -18,3 +18,5 @@ __pycache__/
 /assets/latex/*.out
 /assets/latex/*.toc
 /assets/latex/.latexmkrc
+
+version-results
