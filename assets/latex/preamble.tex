@@ -25,7 +25,7 @@
 
 \newcommand{\TopicTitle}{Your Topic}
 \newcommand{\TargetAudience}{Your intended learners}
-% Friendly concept cards; keep numbering internally for labels and references.
+% Friendly concept cards with visible section-based numbering.
 \definecolor{DefinitionBackground}{HTML}{EFFBFA}
 \definecolor{DefinitionBorder}{HTML}{99D9D2}
 \definecolor{DefinitionHeading}{HTML}{176B65}
@@ -34,7 +34,7 @@
   {\normalfont}{}
   {\color{DefinitionHeading}\bfseries}
   {}{\newline}
-  {\if\relax\detokenize{#3}\relax#1\else#3\fi}
+  {#1~#2\if\relax\detokenize{#3}\relax\else\space(#3)\fi}
 \theoremstyle{concept}
 \newtheorem{definition}{Definition}[section]
 \tcolorboxenvironment{definition}{
