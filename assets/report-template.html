@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>{{Topic}} — Study materials report</title>
+  <!--
+    Standalone report template; no template engine is required.
+    Replace {{...}} slots with researched content. Translate labels and set lang.
+    Repeat marked blocks as needed; assign unique material/source IDs and repair
+    all corresponding links. Remove unused exemplars. State unknowns explicitly.
+    Escape inserted text and attributes; use only verified HTTP(S) source URLs.
+    Cite inspected sources for factual claims. Editorial synthesis is not a lesson
+    from the original author. Link existing practice rather than inventing it.
+    Preserve visible URLs in the references: these also serve the printed report.
+  -->
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #202e36;
+      --muted: #4f606a;
+      --accent: #12635f;
+      --line: #cbd5d8;
+      --wash: #edf4f3;
+      --paper: #fff;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: #e8edef;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; overflow-wrap: anywhere; }
+    ::selection { background: #c6e5df; color: #142b29; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .2em; }
+    a:hover { text-decoration-thickness: 2px; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    h1, h2, h3, nav, dt, th, .metadata, .label, .report-footer {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+    h1 { max-width: 22ch; font-size: clamp(2rem, 5vw, 3.1rem); letter-spacing: -.035em; margin: 0 0 1rem; }
+    h2 { font-size: 1.45rem; letter-spacing: -.02em; margin: 0 0 1rem; }
+    h3 { font-size: 1.1rem; margin: 0 0 .7rem; }
+    p { margin: 0 0 1rem; }
+    ul, ol { padding-inline-start: 1.35rem; margin: .5rem 0 1.25rem; }
+    li + li { margin-top: .65rem; }
+    [id] { scroll-margin-top: 1.5rem; }
+    .sheet { max-width: 61rem; margin: 2.5rem auto; padding: 3rem 4rem; background: var(--paper); }
+    .report-header { border-top: .4rem solid var(--accent); padding-top: 1.5rem; }
+    .metadata { display: flex; flex-wrap: wrap; gap: .5rem 2rem; color: var(--muted); font-size: .8rem; margin-bottom: 2rem; }
+    .standfirst { max-width: 65ch; font-size: 1.15rem; line-height: 1.6; }
+    .editorial-note { font-size: .9rem; color: var(--muted); }
+    nav { border-block: 1px solid var(--line); padding: 1rem 0; margin: 1.75rem 0 2.5rem; font-size: .85rem; }
+    nav ul { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; list-style: none; padding: 0; margin: 0; }
+    nav li + li { margin: 0; }
+    section { margin-top: 2.75rem; }
+    .reading-column { max-width: 70ch; }
+    .summary { background: var(--wash); padding: 1.4rem 1.5rem; margin-top: 1.5rem; }
+    .label { font-weight: 650; font-size: .85rem; }
+    .summary p:last-child, .material p:last-child { margin-bottom: 0; }
+    dl { margin: 0; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin: 1.25rem 0; }
+    dt { font-weight: 650; font-size: .8rem; color: var(--muted); margin-bottom: .25rem; }
+    dd { margin: 0; }
+    .topic + .topic { margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 1rem 0; }
+    caption { text-align: start; color: var(--muted); margin-bottom: .7rem; }
+    th, td { text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); padding: .75rem .8rem .75rem 0; }
+    th { font-weight: 650; font-size: .8rem; }
+    th:first-child, td:first-child { width: 3rem; font-variant-numeric: tabular-nums; }
+    thead { display: table-header-group; }
+    .material { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+    .material-header { margin-bottom: 1rem; }
+    .material-header p { font-size: .9rem; color: var(--muted); margin: 0; }
+    .citation { font-family: system-ui, sans-serif; font-size: .8em; white-space: nowrap; }
+    .source-list { padding-inline-start: 1.5rem; }
+    .source-list li { padding-inline-start: .35rem; margin-top: 1rem; }
+    .source-url { display: block; font-size: .85rem; }
+    .source-meta { display: block; font-size: .85rem; color: var(--muted); }
+    .report-footer { border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 1rem; font-size: .75rem; color: var(--muted); }
+    .skip-link { position: absolute; top: -8rem; left: 1rem; background: white; padding: .75rem; }
+    .skip-link:focus { top: 1rem; }
+    @media (max-width: 42rem) {
+      :root { font-size: 16px; }
+      .sheet { margin: 0; padding: 1.5rem; }
+      .facts { grid-template-columns: 1fr; gap: .85rem; }
+      .metadata { margin-bottom: 1.5rem; }
+      .summary { padding: 1rem; }
+      section { margin-top: 2.25rem; }
+      th, td { padding-right: .5rem; }
+    }
+    @page {
+      size: A4;
+      margin: 18mm 18mm 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: sans-serif;
+        font-size: 9pt;
+        color: #4f606a;
+      }
+    }
+    @media print {
+      :root { font-size: 10.5pt; line-height: 1.5; background: white; }
+      body { background: white; }
+      .sheet { max-width: none; margin: 0; padding: 0; }
+      .skip-link { display: none; }
+      h1 { font-size: 28pt; }
+      h2 { font-size: 16pt; }
+      h3 { font-size: 12pt; }
+      h1, h2, h3, dt, caption, .label { break-after: avoid; page-break-after: avoid; }
+      p, li, dd { orphans: 3; widows: 3; }
+      .metadata, nav, .material-header, .facts > div { break-inside: avoid; page-break-inside: avoid; }
+      section { margin-top: 8mm; }
+      #references { break-before: page; page-break-before: always; margin-top: 0; }
+      .material { margin-top: 6mm; padding-top: 5mm; }
+      .summary { background: transparent; border: 1px solid var(--line); padding: 4mm; }
+      a { color: inherit; }
+      th, td { padding-top: 2.5mm; padding-bottom: 2.5mm; }
+      .report-footer { margin-top: 8mm; }
+      /* Let long resources and references flow across pages instead of clipping.
+         Page numbers use CSS margin boxes where the PDF renderer supports them.
+         Use CSS page sizing and disable the renderer's own header/footer chrome. */
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to report</a>
+  <main class="sheet" id="report">
+    <header class="report-header">
+      <div class="metadata">
+        <span>Open Study Materials Research</span>
+        <span>Prepared {{Report date}}</span>
+      </div>
+      <h1>{{Topic}}</h1>
+      <p class="standfirst">{{The learner’s question and the practical capability this report helps them develop.}}</p>
+      <p class="editorial-note">A curated guide to existing learning materials. Selection notes and learning connections are AI-written editorial guidance, not lessons from the original authors.</p>
+    </header>
+
+    <nav aria-label="Report contents">
+      <ul>
+        <li><a href="#scope">Goal &amp; background</a></li>
+        <li><a href="#topics">Why these topics</a></li>
+        <li><a href="#route">Study route</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#limits">Uncertainties</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </nav>
+
+    <section id="scope" aria-labelledby="scope-heading">
+      <h2 id="scope-heading">Goal &amp; background</h2>
+      <p class="reading-column">{{What the learner wants to understand or accomplish, and what falls outside this report’s scope.}}</p>
+      <dl class="facts">
+        <div><dt>Starting point</dt><dd>{{Known background and prerequisites.}}</dd></div>
+        <div><dt>Constraints</dt><dd>{{Language, format, access needs, and available study time.}}</dd></div>
+      </dl>
+      <p class="editorial-note"><strong>Assumptions:</strong> {{Unconfirmed learner details; distinguish these from known facts.}}</p>
+      <div class="summary">
+        <p class="label">Start here · Editorial recommendation</p>
+        <p>{{The best starting point for this learner, why it fits, and what to study first.}} <a href="#material-1">See the material</a>.</p>
+      </div>
+    </section>
+
+    <section id="topics" aria-labelledby="topics-heading">
+      <h2 id="topics-heading">Why these topics matter</h2>
+      <!-- Repeat .topic for each relevant topic; cite its practical application. -->
+      <div class="topic reading-column">
+        <h3>{{Relevant topic}}</h3>
+        <p>{{The practical question this topic answers, where it is useful, and why it is needed for this learner’s goal.}} <a class="citation" href="#source-1">[1]</a></p>
+        <p><strong>Depth needed:</strong> {{What to understand now, what background is needed, and what can wait.}}</p>
+      </div>
+    </section>
+
+    <section id="route" aria-labelledby="route-heading">
+      <h2 id="route-heading">A suggested study route</h2>
+      <table>
+        <caption>Editorial guidance: follow dependencies, not a complete course by default.</caption>
+        <thead><tr><th scope="col">Order</th><th scope="col">Study</th><th scope="col">Purpose</th></tr></thead>
+        <tbody>
+          <!-- Repeat rows in learning order and link to the corresponding material. -->
+          <tr><td>1</td><td><a href="#material-1">{{Material and specific section}}</a></td><td>{{What this prepares you to understand or do next.}}</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="materials" aria-labelledby="materials-heading">
+      <h2 id="materials-heading">The materials, with context</h2>
+      <p class="editorial-note">Access describes what can be read or used. Licensing describes reuse permissions. Free access alone does not establish an open license.</p>
+      <!-- Repeat this article. Update its IDs, source citations, and route links. -->
+      <article class="material" id="material-1" aria-labelledby="material-1-heading">
+        <header class="material-header">
+          <h3 id="material-1-heading"><a href="{{Material URL}}">{{Material title}}</a></h3>
+          <p>{{Author or institution}} · {{Material format and level}}</p>
+        </header>
+        <dl class="facts">
+          <div><dt>Read or watch</dt><dd>{{Specific chapter, lecture, pages, or timestamp.}}</dd></div>
+          <div><dt>Prerequisites</dt><dd>{{Verified prerequisites, or unknown.}} <a class="citation" href="#source-1">[1]</a></dd></div>
+          <div><dt>Access conditions</dt><dd>{{Free, registration required, partial access, or unknown.}} <a class="citation" href="#source-1">[1]</a></dd></div>
+          <div><dt>License</dt><dd>{{Verified license and scope, or unknown.}} <a class="citation" href="#source-1">[1]</a></dd></div>
+        </dl>
+        <p><strong>Why it helps this learner.</strong> {{Source-backed coverage and editorial explanation of its fit to the goal.}} <a class="citation" href="#source-1">[1]</a></p>
+        <p><strong>What to pay attention to.</strong> {{Where the original material connects the concept to an application, example, or interpretation.}} <a class="citation" href="#source-1">[1]</a></p>
+        <p><strong>Limitations.</strong> {{Missing coverage, accessibility or tooling constraints, and where another resource is needed.}} <a class="citation" href="#source-1">[1]</a></p>
+      </article>
+    </section>
+
+    <section id="practice" aria-labelledby="practice-heading">
+      <h2 id="practice-heading">Put the ideas to work</h2>
+      <p class="editorial-note">Existing exercises, projects, or demonstrations from the linked materials—not generated assignments.</p>
+      <ul class="reading-column">
+        <!-- Repeat for existing practice, or replace the list with a gap statement. -->
+        <li><a href="{{Practice URL}}">{{Existing exercise or project}}</a>. {{What it practices, required tools, access conditions, and verified solution availability.}} <a class="citation" href="#source-1">[1]</a></li>
+      </ul>
+    </section>
+
+    <section id="limits" aria-labelledby="limits-heading">
+      <h2 id="limits-heading">What remains uncertain</h2>
+      <p class="reading-column">{{Research limits, unverified details, missing practice, and recommendations that depend on the learner’s answers.}}</p>
+    </section>
+
+    <section id="references" aria-labelledby="references-heading">
+      <h2 id="references-heading">References &amp; verification</h2>
+      <p class="editorial-note">Numbered references support factual claims. The visible URLs remain usable in print. Verification dates indicate inspection, not publication.</p>
+      <ol class="source-list">
+        <!-- Repeat per inspected source; keep numbering and citation IDs aligned. -->
+        <li id="source-1">
+          <strong>{{Source title}}</strong> — {{Author or institution}}.
+          <a class="source-url" href="{{Source URL}}">{{Source URL}}</a>
+          <span class="source-meta">Inspected {{Verification date}} · Supports: {{Claims supported by this source.}}</span>
+        </li>
+      </ol>
+    </section>
+
+    <footer class="report-footer">
+      This report is a guide to the originals, not a substitute for them. Linked materials retain their own authorship and licenses. The report opens offline; visiting external resources requires internet access.
+    </footer>
+  </main>
+</body>
+</html>
