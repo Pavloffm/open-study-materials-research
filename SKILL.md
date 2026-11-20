@@ -29,6 +29,7 @@ By default, conduct research independently in a prolonged, multi-hour cycle if n
 This is a reference route: return to the necessary steps as findings emerge, rather than waiting for the previous stage to be fully completed. Scripts help manage the work; if a tool is unavailable, perform the available part of the work using the agent's capabilities.
 
 ## Step 1. Understand the user's goal
+Ask user minimum 3 questions. Use your shell function to ask questions if it is possible.
 
 1. Formulate the working objective from the request. For a broad task, start with the most reliably known branch and expand the search based on findings.
 
@@ -43,7 +44,7 @@ This is a reference route: return to the necessary steps as findings emerge, rat
 1. Search relevant **university courses and lecture notes**, **open textbooks**, **official documentation**, and **problem sets**. Use the [sources index](references/sources/index.md) for discovery guidance.
 
 ## Step 3. Generate the report
-Fill the existing files in assets/latex/sections/ with the findings, keeping each kind of content in its assigned section:
+Never write into the original skill assets. Make copy of the existing files in assets/latex/sections/. Than fill them with the findings, keeping each kind of content in its assigned section:
 
 ### `01_content.tex`. Learning content
 Write the complete educational content needed to help the reader
@@ -91,10 +92,13 @@ understand the topic, not merely a summary of the sources.
    teach the subject effectively. Do not force every topic into
    identical headings or include irrelevant material.
 
-The final content should form a coherent learning path that allows
-the reader to understand the main concepts, follow the reasoning,
-and apply the knowledge at the intended level without constantly
-consulting external resources.
+**Original source text — preserve wording when permitted**
+
+The reader must be able to evaluate the quality of the *author's original teaching*, not only the LLM's paraphrase.
+
+1. **Prefer faithful source passages when useful and permitted.** For a strong, relevant explanation, definition, derivation, or example, reproduce the author's actual wording instead of automatically summarizing it. When permitted, prefer **complete, coherent paragraphs or passages**, with enough context to understand the author's reasoning, rather than disconnected short quotations.
+2. **Verify before copying.** Reproduce text only from a source passage that was actually opened and read. Never invent, reconstruct from memory, or present a paraphrase as a verbatim quotation.
+3. **Keep verbatim text unchanged.** Preserve the author's words, paragraph sequence, mathematical content, and original meaning. LaTeX escaping, typesetting, and necessary notation conversion are allowed, but must not silently change wording or mathematics. Indicate deliberate omissions with an ellipsis and alterations with a clear note; do not describe an edited passage as fully verbatim.
 
 ### `02_sources.tex`. Sources
 Add every inspected source as a bibliography entry. Use citation keys that match the \cite{...} references in the other sections.
