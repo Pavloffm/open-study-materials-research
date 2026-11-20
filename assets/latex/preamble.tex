@@ -1,0 +1,28 @@
+% Shared configuration. Section-writing agents must not modify this file.
+
+% Body font: Source Sans 3 (Google Fonts, SIL OFL 1.1).
+% Requires LuaLaTeX or XeLaTeX; the font files are in font/source-sans-3/.
+\usepackage{fontspec}
+\setmainfont{SourceSans3}[
+  Path = font/source-sans-3/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+]
+
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+
+% Clickable URLs and cross-references; no visible link boxes in print.
+\usepackage[hidelinks]{hyperref}
+\urlstyle{same}
+% Closing source list heading (thebibliography).
+\renewcommand{\refname}{Sources}
+
+\newcommand{\TopicTitle}{Your Topic}
+\newcommand{\TargetAudience}{Your intended learners}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
