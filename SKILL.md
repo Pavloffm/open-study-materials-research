@@ -29,13 +29,30 @@ By default, conduct research independently in a prolonged, multi-hour cycle if n
 This is a reference route: return to the necessary steps as findings emerge, rather than waiting for the previous stage to be fully completed. Scripts help manage the work; if a tool is unavailable, perform the available part of the work using the agent's capabilities.
 
 ## Step 1. Understand the user's goal
-Ask user minimum 3 questions. Use your shell function to ask questions if it is possible.
+Ask user 2 questions. Use your shell function to ask questions if it is possible.
 
-1. Formulate the working objective from the request. For a broad task, start with the most reliably known branch and expand the search based on findings.
+1. **Knowledge level** determines the assumed prerequisites
+and complexity of explanations.
+- Beginner: Build intuition and explain prerequisites.
+- Intermediate: Connect concepts with formal reasoning,
+  examples, and practical applications.
+- Advanced: Assume relevant prerequisites, but provide
+  rigorous explanations, derivations, proofs where useful,
+  deeper connections, and technical limitations.
 
-2. Establish current level, relevant prerequisites, preferred depth, and intended application.
+A higher knowledge level must not automatically result
+in a shorter or less comprehensive document.
 
-3. Ask up to three essential questions in a single message if needed, but proceed from known information. Label any assumptions.
+2. **Requested depth** determines the completeness of
+the educational material.
+- Overview: Focus on the central ideas.
+- Complete introductory guide: Cover the foundational
+  theory, essential methods, important cases, worked
+  examples, and applications needed for independent
+  understanding.
+- In-depth study: Develop the subject thoroughly,
+  including relevant proofs, extensions, edge cases,
+  and connections to related fields.
 
 4. Make a small **topic map**: main concept → subtopics → prerequisite concepts.
 
@@ -44,7 +61,7 @@ Ask user minimum 3 questions. Use your shell function to ask questions if it is 
 1. Search relevant **university courses and lecture notes**, **open textbooks**, **official documentation**, and **problem sets**. Use the [sources index](references/sources/index.md) for discovery guidance.
 
 ## Step 3. Generate the report
-Never write into the original skill assets. Make copy of the existing files in assets/latex/sections/. Than fill them with the findings, keeping each kind of content in its assigned section:
+**Never write into the original skill assets.** Make copy of the existing files in assets/latex/sections/ into your temp files. Than fill them with the findings, keeping each kind of content in its assigned section:
 
 ### `01_content.tex`. Learning content
 Write the complete educational content needed to help the reader
